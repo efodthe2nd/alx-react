@@ -5,8 +5,10 @@ import './Footer.css';
 
 export default function Footer(){
 return (
-    <div className="App-footer">
-        Copyright {getFullYear()} - {getFooterCopy()}
-    </div>
+    <>
+        <div className="App-footer">
+            Copyright {getFullYear()} - {getFooterCopy()}
+        </div>
+    </>
 );
-};
+}
