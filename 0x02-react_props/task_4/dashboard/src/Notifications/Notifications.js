@@ -3,15 +3,23 @@ import "./Notifications.css";
 import closeIcon from "../assets/close-icon.png";
 import { getLatestNotification } from "../utils/utils";
 import NotificationItem from "./NotificationItem";
+import PropTypes from "prop-types";
 
-function Notifications() {
+function Notifications({ displayDrawer }) {
   return (
-    <div className="Notifications">
+    <React.Fragment>
+      {displayDrawer ? (
+        <div className="'flex-area'">
+          <div className="menuItem">
+            <p>Your notifications </p>
+          </div>
+
+        <div className="Notifications">
       <button
         style={{ color: "#3a3a3a", fontWeight: "bold", background: "none", border: "none", fontSize: "15px", position: "absolute", right: "2px", top: "2px", cursor: "pointer" }}
         aria-label="Close"
         onClick={console.log("Close button has been clicked")}
-      >
+        >
         <img src={closeIcon} alt="closeIcon" width="10px" />
       </button>
       <p>Here is the list of notifications</p>
@@ -21,7 +29,22 @@ function Notifications() {
         <NotificationItem type="urgent" html={getLatestNotification()} />
       </ul>
     </div>
+    </div>
+  ) : (
+    <div className="menuItem">
+      <p>Your notifications </p>
+    </div>
+  )}
+    </React.Fragment>
   );
 }
+
+Notifications.propTypes = {
+  displayDrawer: PropTypes.bool,
+};
+
+Notifications.defaultProps = {
+  displayDrawer: false,
+};
 
 export default Notifications;

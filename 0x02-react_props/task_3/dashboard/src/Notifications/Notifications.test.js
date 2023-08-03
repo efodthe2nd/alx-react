@@ -1,6 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 import Notifications from "./Notifications";
+import NotificationItem from "./NotificationItem";
 import { wrap } from "lodash";
 import { getLatestNotification } from "../utils/utils";
 
@@ -20,10 +21,10 @@ describe("Notification component tests", () => {
   });
 
   it("renders an unordered list", () => {
-    const wrapper = shalloe(<Notifications />);
+    const wrapper = shallow(<Notifications />);
     expect(wrapper.find("ul").children()).toHaveLength(3);
     wrapper.find("ul").forEach((node) => {
-      expect(node.equals(<NotificationITem />));
+      expect(node.equals(<NotificationItem />));
     });
   });
 
