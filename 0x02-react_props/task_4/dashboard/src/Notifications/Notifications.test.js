@@ -1,14 +1,14 @@
 import React from "react";
 import { shallow } from "enzyme";
+import { getLatestNotification } from "../utils/utils";
 import Notifications from "./Notifications";
 import NotificationItem from "./NotificationItem";
-import { getLatestNotification } from "../utils/utils";
 
 describe("Notification tests", () => {
   it("renders Notification component without crashing", () => {
-    const notification = shallow(<Notifications />);
+    const wrapper = shallow(<Notifications />);
 
-    expect(notification).toBeDefined();
+    expect(wrapper).toBeDefined();
   });
 
   it("renders correct list items", () => {
@@ -31,31 +31,33 @@ describe("Notification tests", () => {
   });
 
   it("renders correct text", () => {
-    const notification = shallow(<Notifications displayDrawer={true} />);
+    const wrapper = shallow(<Notifications displayDrawer={true} />);
 
-    expect(notification.contains(<p>Here is the list of notifications</p>)).toBe(true);
+    expect(wrapper.contains(<p>Here is the list of notifications</p>)).toBe(true);
   });
 
   it("displays menu item when displayDrawer is false", () => {
     const wrapper = shallow(<Notifications displayDrawer={false} />);
 
     expect(wrapper.find("div.menuItem").exists()).toBe(true);
-    expect(wrapper.find("div.menuItem").html()).toEqual('<div class="menuItem"><p>Your notifications </p></div>');
+    expect(wrapper.find("div.menuItem").html()).toEqual('<div class="menuItem"><p>Your notifications</p></div>');
   });
 
   it("does not display notifications when displayDrawer is false", () => {
     const wrapper = shallow(<Notifications displayDrawer={false} />);
+
     expect(wrapper.find("div.Notifications").exists()).toBe(false);
   });
 
   it("does not display menuItem when displayDrawer is true", () => {
     const wrapper = shallow(<Notifications displayDrawer={true} />);
+
     expect(wrapper.find("div.menuItem").exists()).toBe(true);
   });
 
   it("displays Notifications when displayDrawer is true", () => {
     const wrapper = shallow(<Notifications displayDrawer={true} />);
+
     expect(wrapper.find("div.Notifications").exists()).toBe(true);
   });
 });
-
