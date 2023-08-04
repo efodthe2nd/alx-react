@@ -8,7 +8,7 @@ function CourseList({ listCourses }) {
   return (
     <table id="CourseList">
       <thead>
-        <CourseListRow textFirstCell="Available courses" textSecondCell={null} isHeader={true} />
+        <CourseListRow textFirstCell="Available courses" isHeader={true} />
         <CourseListRow textFirstCell="Course name" textSecondCell="Credit" isHeader={true} />
       </thead>
       <tbody>

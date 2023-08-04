@@ -3,7 +3,6 @@ import CourseList from "./CourseList";
 import CourseListRow from "./CourseListRow";
 import { shallow } from "enzyme";
 
-
 const listCourses = [
   { id: 1, name: "ES6", credit: 60 },
   { id: 2, name: "Webpack", credit: 20 },
@@ -31,7 +30,7 @@ describe("CourseList component tests", () => {
     expect(wrapper.find("tbody").childAt(2).html()).toEqual("<tr><td>React</td><td>40</td></tr>");
   });
 
-  it("renders correctly when passed a list of courses", () => {
+  it("renders correctely when passed a list of courses", () => {
     const wrapper = shallow(<CourseList listCourses={listCourses} />);
 
     expect(wrapper.find("tbody").children()).toHaveLength(3);
