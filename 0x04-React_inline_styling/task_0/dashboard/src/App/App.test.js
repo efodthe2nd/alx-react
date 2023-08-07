@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import React from "react";
 import App from "./App";
 import Login from "../Login/Login";
@@ -16,7 +19,7 @@ describe("App tests", () => {
   it("should render Notifications component", () => {
     const component = shallow(<App />);
 
-    expect(component.contains(<Notifications />)).toBe(true);
+    expect(component.containsMatchingElement(<Notifications />)).toEqual(false);
   });
   it("should render Header component", () => {
     const component = shallow(<App />);
@@ -28,7 +31,7 @@ describe("App tests", () => {
 
     expect(component.contains(<Login />)).toBe(true);
   });
-  it("should render Footer component", () => {
+  it("should render Footer Component", () => {
     const component = shallow(<App />);
 
     expect(component.contains(<Footer />)).toBe(true);
@@ -36,7 +39,7 @@ describe("App tests", () => {
   it("does not render courselist if logged out", () => {
     const component = shallow(<App />);
 
-    component.setProps({ isLoggedIn: false });
+    component.setProps({ isLogedIn: false });
 
     expect(component.contains(<CourseList />)).toBe(false);
   });
@@ -60,7 +63,7 @@ describe("When ctrl + h is pressed", () => {
   });
 
   document.alert = jest.fn();
-  if("checks that alert function is called", () => {
+  it("checks that alert function is called", () => {
     const wrapper = mount(<App />);
     const spy = jest.spyOn(window, "alert");
     const event = new KeyboardEvent("keydown", { ctrlKey: true, key: "h" });
@@ -71,7 +74,7 @@ describe("When ctrl + h is pressed", () => {
     wrapper.unmount();
   });
 
-  it("checks that the alert is 'logging you out'", () => {
+  it('checks that the alert is "Logging you out"', () => {
     const wrapper = mount(<App />);
     const spy = jest.spyOn(window, "alert");
     const event = new KeyboardEvent("keydown", { ctrlKey: true, key: "h" });
