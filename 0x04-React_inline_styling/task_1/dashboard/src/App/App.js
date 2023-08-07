@@ -8,8 +8,8 @@ import CourseList from "../CourseList/CourseList";
 import PropTypes from "prop-types";
 import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom";
 import BodySection from "../BodySection/BodySection";
-import "./App.css";
 import { getLatestNotification } from "../utils/utils";
+import { StyleSheet, css } from "aphrodite";
 
 class App extends React.Component {
 
@@ -48,7 +48,7 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="App">
+        <div className={css(styles.App)}>
           <div className="heading-section">
             <Notifications listNotifications={this.listNotifications} />
             <Header />
@@ -76,6 +76,15 @@ class App extends React.Component {
   }
 
 }
+
+const styles = StyleSheet.create({
+  App: {
+    height: "100vh",
+    maxWidth: "100vw",
+    position: "relative",
+    fontFamily: "Arial, Helvetica, sans-serif",
+  },
+});
 
 App.defaultProps = {
   isLoggedIn: false,
