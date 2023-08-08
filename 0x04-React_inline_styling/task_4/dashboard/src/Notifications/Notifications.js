@@ -62,6 +62,18 @@ class Notifications extends Component {
   }
 }
 
+const opacityAnim = {
+  "0%": { opacity: 0.5 },
+  "100%": { opacity: 1 },
+};
+
+const bounceAnim = {
+  "0%": { transform: "translateY(0px)" },
+  "33%": { transform: "transalteY(-5px)" },
+  "66%": { transform: "translateY(5px)" },
+  "100%": { transform: "translateY(0px)" },
+};
+
 const styles = StyleSheet.create({
   Notifications: {
     padding: "1em",
@@ -69,17 +81,15 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: "1.8em",
     right: "0",
-
-    "@media (max-width: 375px)": {
-      display: "block",
-      height: "100vh",
-      width: "100vw",
-      marginLeft: "auto",
-      marginRight: "auto",
+    zIndex: "100",
+    "@media (max-width: 900px)": {
+      width: "100%",
+      padding: "0px",
+      fontSize: 20,
+      position: "relative",
+      right: 0,
+      left: 0,
       border: "none",
-      fontSize: "20px",
-      padding: "0",
-      background: "white",
     },
   },
 
@@ -89,7 +99,27 @@ const styles = StyleSheet.create({
   },
 
   menuItem: {
+    position: "relative",
+    zIndex: 100,
     textAlign: "right",
+    ":hover": {
+      cursor: "pointer",
+      animationName: [opacityAnim, bounceAnim],
+      animationDuration: "1s, 0.5s",
+      animationIterationCount: "3",
+    },
+  },
+
+  ul: {
+    "@media (max-width: 900px)": {
+      padding: 0,
+    },
+  },
+  button: {
+    "@media (max-width: 900px)": {
+      position: "relative",
+      float: "right",
+    },
   },
 });
 
