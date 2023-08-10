@@ -23,10 +23,11 @@ class Notifications extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className={css(styles.menuItem)}>
+        {this.props.displayDrawer === false ? (
+        <div className={css(styles.menuItem)} onClick={(e) => {this.props.handleDisplayDrawer();}}>
           <p>Your notifications</p>
         </div>
-        {this.props.displayDrawer ? (
+        ) : (
           <div className={css(styles.Notifications)}>
             <button
               style={{
@@ -44,6 +45,7 @@ class Notifications extends Component {
               aria-label="Close"
               onClick={(e) => {
                 console.log("Close button has been clicked");
+                this.props.handleHideDrawer();
               }}
             >
               <img src={closeIcon} alt="close icon" width="10px" />
@@ -56,7 +58,7 @@ class Notifications extends Component {
               })}
             </ul>
           </div>
-        ) : null}
+        )}
       </React.Fragment>
     );
   }
@@ -126,11 +128,15 @@ const styles = StyleSheet.create({
 Notifications.propTypes = {
   displayDrawer: PropTypes.bool,
   listNotifications: PropTypes.arrayOf(NotificationItemShape),
+  handleDisplayDrawer: PropTypes.func,
+  handleHideDrawer: PropTypes.func,
 };
 
 Notifications.defaultProps = {
   displayDrawer: false,
   listNotifications: [],
+  handleDisplayDrawer: () => {},
+  handleHideDrawer: () => {},
 };
 
 export default Notifications;
