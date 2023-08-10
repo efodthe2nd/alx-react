@@ -40,11 +40,11 @@ class App extends React.Component {
       this.props.logOut();
     }
   }
-  handleDisplayDrawer = () => {
-    this.setState({displayDrawer : !this.state.displayDrawer});
+  handleDisplayDrawer() {
+    this.setState({displayDrawer : true});
   }
-  handleHideDrawer = () => {
-    this.setState({ displayDrawer: !this.state.displayDrawer });
+  handleHideDrawer() {
+    this.setState({ displayDrawer: false });
   }
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeyPress);
