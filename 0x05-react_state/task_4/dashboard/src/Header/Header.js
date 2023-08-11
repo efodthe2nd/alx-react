@@ -3,7 +3,6 @@ import logo from "../assets/holberton-logo.jpg";
 import { StyleSheet, css } from "aphrodite";
 import { AppContext } from "../App/AppContext";
 
-
 function Header() {
   const { user, logOut } = useContext(AppContext);
 
@@ -19,7 +18,7 @@ function Header() {
           Welcome<strong> {user.email} </strong>
           <em>
             <a href="#" onClick={logOut}>
-              (logOut)
+              (logout)
             </a>
           </em>
         </section>
@@ -40,6 +39,10 @@ const styles = StyleSheet.create({
   img: {
     width: "200px",
     height: "200px",
+  },
+
+  greeting: {
+    marginTop: "1rem",
   },
 });
 

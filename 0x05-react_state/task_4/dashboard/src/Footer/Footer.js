@@ -5,12 +5,13 @@ import { AppContext } from "../App/AppContext";
 
 function Footer() {
   const { user } = useContext(AppContext);
+
   return (
     <>
       <div className="App-footer">
         {user.isLoggedIn && (
           <p>
-            <a href="#">Contact Us</a>
+            <a href="#">Contact us</a>
           </p>
         )}
         <p>

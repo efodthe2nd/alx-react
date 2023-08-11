@@ -5,7 +5,7 @@ import NotificationItem from "./NotificationItem";
 import PropTypes from "prop-types";
 import NotificationItemShape from "./NotificationItemShape";
 
-class Notifications extends Component {
+class Notifications extends PureComponent {
   constructor(props) {
     super(props);
   }
@@ -14,14 +14,14 @@ class Notifications extends Component {
     return (
       <React.Fragment>
         {!this.props.displayDrawer ? (
-        <div 
-        className={css(styles.menuItem)}
-        onClick={() => {
-          this.props.handleDisplayDrawer();
-        }}
-        >
-          <p>Your notifications</p>
-        </div>
+          <div
+            className={css(styles.menuItem)}
+            onClick={() => {
+              this.props.handleDisplayDrawer();
+            }}
+          >
+            <p>Your notifications</p>
+          </div>
         ) : (
           <div className={css(styles.Notifications)}>
             <button
@@ -66,7 +66,7 @@ const opacityAnim = {
 
 const bounceAnim = {
   "0%": { transform: "translateY(0px)" },
-  "33%": { transform: "transalteY(-5px)" },
+  "33%": { transform: "translateY(-5px)" },
   "66%": { transform: "translateY(5px)" },
   "100%": { transform: "translateY(0px)" },
 };

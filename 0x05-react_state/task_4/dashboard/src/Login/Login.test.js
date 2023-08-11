@@ -29,7 +29,7 @@ describe("test for submit input on form", () => {
     expect(wrapper.find("input[type='submit']").props().disabled).toEqual(true);
   });
 
-  it ("verify that after changing the value of the two inputs, the button is enabled", () => {
+  it("verify that after changing the value of the two inputs, the button is enabled", () => {
     const wrapper = shallow(<Login />);
 
     wrapper.find("#email").simulate("change", { target: { value: "t" } });

@@ -34,11 +34,16 @@ const styles = StyleSheet.create({
   },
 
   th: {
+    borderBottom: "1px solid #ddd",
+    width: "80%",
+  },
+
+  td: {
     width: "80%",
   },
 
   tr: {
-    ":nth-child(even)(2)": {
+    "nth-child(2)": {
       textAlign: "left",
     },
   },

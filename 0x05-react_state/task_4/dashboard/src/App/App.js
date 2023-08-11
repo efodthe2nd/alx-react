@@ -41,12 +41,6 @@ class App extends React.Component {
     { id: 3, name: "React", credit: 40 },
   ];
 
-  listNotifications = [
-    { id: 1, type: "default", value: "New course available" },
-    { id: 2, type: "urgent", value: "New resume available" },
-    { id: 3, type: "urgent", html: getLatestNotification() },
-  ];
-
   handleKeyPress(e) {
     if (e.ctrlKey && e.key === "h") {
       e.preventDefault();
@@ -91,7 +85,6 @@ class App extends React.Component {
     const newList = this.state.listNotifications.filter((notification) => notification.id !== id);
     this.setState({ listNotifications: newList });
   }
-
   render() {
     return (
       <AppContext.Provider
@@ -111,7 +104,7 @@ class App extends React.Component {
                 handleHideDrawer={this.handleHideDrawer}
               />
               <Header />
-          </div>
+            </div>
             {this.state.user.isLoggedIn ? (
               <BodySectionWithMarginBottom title="Course list">
                 <CourseList listCourses={this.listCourses} />

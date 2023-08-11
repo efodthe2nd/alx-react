@@ -24,12 +24,11 @@ function Login(props) {
     if (email !== "" && password !== "") {
       setEnableSubmit(true);
     } else {
-      if (enableSubmit !== false ) {
+      if (enableSubmit !== false) {
         setEnableSubmit(false);
       }
     }
   }, [email, password]);
-
 
   return (
     <React.Fragment>
@@ -37,15 +36,19 @@ function Login(props) {
         <p>Login to access the full dashboard</p>
         <form onSubmit={handleLoginSubmit}>
           <label htmlFor="email">Email:</label>
-          <input className={css(styles.input)} value={email} type="email" name="email" id="email" onChange={handleChangeEmail} />
+          <input className={css(styles.input)} type="email" id="email" name="email" value={email} onChange={handleChangeEmail} />
           <label htmlFor="password">Password:</label>
-          <input className={css.apply(styles.input)} value={password} type="password" id="password" name="password" onChange={handleChangePassword} />
+          <input className={css(styles.input)} type="password" id="password" name="password" value={password} onChange={handleChangePassword} />
           <input type="submit" value="Ok" disabled={!enableSubmit} />
         </form>
       </div>
     </React.Fragment>
   );
 }
+
+Login.propTypes = {
+  logIn: PropTypes.func,
+};
 
 const styles = StyleSheet.create({
   "App-body": {
@@ -62,4 +65,5 @@ const styles = StyleSheet.create({
     margin: "10px",
   },
 });
+
 export default Login;
