@@ -1,25 +1,24 @@
-
 import React from "react";
-import Notifications from "../Notifications/Notifications";
 import Header from "../Header/Header";
-import Login from "../Login/Login";
 import Footer from "../Footer/Footer";
+import Login from "../Login/Login";
 import CourseList from "../CourseList/CourseList";
-import PropTypes from "prop-types";
+import Notifications from "../Notifications/Notifications";
 import BodySectionWithMarginBottom from "../BodySection/BodySectionWithMarginBottom";
 import BodySection from "../BodySection/BodySection";
-import { getLatestNotification } from "../utils/utils";
 import { StyleSheet, css } from "aphrodite";
+import PropTypes from "prop-types";
+import { getLatestNotification } from "../utils/utils";
 import { AppContext, user } from "./AppContext";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { 
+    this.state = {
       displayDrawer: false,
       user: user,
-      logOut: this.logOut, 
+      logOut: this.logOut,
     };
 
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -43,16 +42,20 @@ class App extends React.Component {
 
   handleKeyPress(e) {
     if (e.ctrlKey && e.key === "h") {
+      e.preventDefault();
       alert("Logging you out");
       this.props.logOut();
     }
   }
+
   handleDisplayDrawer() {
-    this.setState({displayDrawer : true});
+    this.setState({ displayDrawer: true });
   }
+
   handleHideDrawer() {
     this.setState({ displayDrawer: false });
   }
+
   componentDidMount() {
     document.addEventListener("keydown", this.handleKeyPress);
   }
@@ -85,40 +88,38 @@ class App extends React.Component {
           logout: this.state.logOut,
         }}
       >
-
-      <React.Fragment>
-        <div className={css(styles.App)}>
-          <div className="heading-section">
-            <Notifications 
-              listNotifications={this.listNotifications}
-              displayDrawer={this.state.displayDrawer}
-              handleDisplayDrawer={this.handleDisplayDrawer}
-              handleHideDrawer={this.handleHideDrawer}
-             />
-            <Header />
+        <React.Fragment>
+          <div className={css(styles.App)}>
+            <div className="heading-section">
+              <Notifications
+                listNotifications={this.listNotifications}
+                displayDrawer={this.state.displayDrawer}
+                handleDisplayDrawer={this.handleDisplayDrawer}
+                handleHideDrawer={this.handleHideDrawer}
+              />
+              <Header />
+            </div>
+            {this.state.user.isLoggedIn ? (
+              <BodySectionWithMarginBottom title="Course list">
+                <CourseList listCourses={this.listCourses} />
+              </BodySectionWithMarginBottom>
+            ) : (
+              <BodySectionWithMarginBottom title="Log in to continue">
+                <Login logIn={this.logIn} />
+              </BodySectionWithMarginBottom>
+            )}
+            <BodySection title="News from the school">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis at tempora odio, necessitatibus repudiandae reiciendis cum nemo sed asperiores ut molestiae eaque aliquam illo
+                ipsa iste vero dolor voluptates.
+              </p>
+            </BodySection>
+            <Footer />
           </div>
-          {this.state.user.isLoggedIn ? (
-            <BodySectionWithMarginBottom title="Course list">
-              <CourseList listCourses={this.listCourses} />
-            </BodySectionWithMarginBottom> 
-          ) : (
-            <BodySectionWithMarginBottom title="Log in to continue">
-              <Login logIn={this.logIn} />
-            </BodySectionWithMarginBottom>
-          )}
-          <BodySection title="News from the school">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing el iste vero
-              dolor voluptates.
-            </p>
-          </BodySection>
-          <Footer />
-        </div>
-      </React.Fragment>
+        </React.Fragment>
       </AppContext.Provider>
     );
   }
-
 }
 
 const styles = StyleSheet.create({
