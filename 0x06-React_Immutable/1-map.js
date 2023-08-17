@@ -1,11 +1,5 @@
-#!/usr/bin/node
+import { Map } from 'immutable';
 
-function getImmutableObject(obj){
-  const { Map } = require('immutable');
-  
-  return Map(obj);
-}
+const getImmutableObject = (object) => Map(object);
 
-//const newObj = { fear: true, smell: -1033565343.56343, wall: false, thing: -91233435 };
-
-//console.log(getImmutableObject(newObj));
+export default getImmutableObject;
