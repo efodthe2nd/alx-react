@@ -1,11 +1,7 @@
-#!/usr/bin/node
+import { fromJS } from 'immutable';
 
 export default function accessImmutableObject(object, array) {
-  const { fromJS } = require('immutable');
+  const mappedObj = fromJS(object);
 
-  const map = fromJS(object);
-
-  return map.getIn(array, undefined);
+  return mappedObj.getIn(array, undefined);
 }
-
-//console.log(accessImmutableObject({ name: { first: "guillame", last: "salva" } }, ['name', 'first']));
