@@ -33,17 +33,17 @@ describe("CourseList component tests", () => {
     });
 
     expect(wrapper.find("tbody").children()).toHaveLength(3);
-    expect(wrapper.find("tbody").childAt(0).html()).toEqual('<tr class="normal_y7r86x"><td>ES6</td><td>60</td></tr>');
-    expect(wrapper.find("tbody").childAt(1).html()).toEqual('<tr class="normal_y7r86x"><td>Webpack</td><td>20</td></tr>');
-    expect(wrapper.find("tbody").childAt(2).html()).toEqual('<tr class="normal_y7r86x"><td>React</td><td>40</td></tr>');
+    expect(wrapper.find("tbody").childAt(0).html()).toEqual('<tr style="background-color:#f5f5f5ab" class=""><td class="td_1uxrx9c"><input type="checkbox"/>ES6</td><td class="td_1uxrx9c">60</td></tr>');
+    expect(wrapper.find("tbody").childAt(1).html()).toEqual('<tr style="background-color:#f5f5f5ab" class=""><td class="td_1uxrx9c"><input type="checkbox"/>Webpack</td><td class="td_1uxrx9c">20</td></tr>');
+    expect(wrapper.find("tbody").childAt(2).html()).toEqual('<tr style="background-color:#f5f5f5ab" class=""><td class="td_1uxrx9c"><input type="checkbox"/>React</td><td class="td_1uxrx9c">40</td></tr>');
   });
 
   it("renders correctely when passed a list of courses", () => {
     const wrapper = shallow(<CourseList listCourses={listCourses} />);
 
     expect(wrapper.find("tbody").children()).toHaveLength(3);
-    expect(wrapper.find("tbody").childAt(0).html()).toEqual('<tr class="normal_y7r86x"><td>ES6</td><td>60</td></tr>');
-    expect(wrapper.find("tbody").childAt(1).html()).toEqual('<tr class="normal_y7r86x"><td>Webpack</td><td>20</td></tr>');
-    expect(wrapper.find("tbody").childAt(2).html()).toEqual('<tr class="normal_y7r86x"><td>React</td><td>40</td></tr>');
+    expect(wrapper.find("tbody").childAt(0).html()).toEqual('<tr style="background-color:#f5f5f5ab" class=""><td class="td_1uxrx9c"><input type="checkbox"/>ES6</td><td class="td_1uxrx9c">60</td></tr>');
+    expect(wrapper.find("tbody").childAt(1).html()).toEqual('<tr style="background-color:#f5f5f5ab" class=""><td class="td_1uxrx9c"><input type="checkbox"/>Webpack</td><td class="td_1uxrx9c">20</td></tr>');
+    expect(wrapper.find("tbody").childAt(2).html()).toEqual('<tr style="background-color:#f5f5f5ab" class=""><td class="td_1uxrx9c"><input type="checkbox"/>React</td><td class="td_1uxrx9c">40</td></tr>');
   });
 });
