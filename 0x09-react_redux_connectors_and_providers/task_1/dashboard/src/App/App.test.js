@@ -27,6 +27,6 @@ describe("<App />", () => {
       isNotificationDrawerVisible: true,
     });
     const result = mapStateToProps(state);
-    expect(result).toEqual({ displayDrawerr: true });
+    expect(result).toEqual({ displayDrawer: true });
   });
 });
