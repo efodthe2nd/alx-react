@@ -1,18 +1,18 @@
 import React, { Component } from "react";
-import holberton_logo from "../assets/holberton_logo.jpg";
-import { StyleSheet, css } from "aphrodite";
-import AppContext from "../App/AppContext";
 import { connect } from "react-redux";
 import { logout } from "../actions/uiActionCreators";
 import PropTypes from "prop-types";
+import { StyleSheet, css } from "aphrodite";
+import AppContext from "../App/AppContext";
+import holberton_logo from "../assets/holberton_logo.jpg";
 
-class Header extends Component {
+export class Header extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const { user, logOut } = this.props;
+    const { user, logout } = this.props;
 
     return (
       <div className={css(styles.header)}>
@@ -22,7 +22,7 @@ class Header extends Component {
         {user && (
           <p id="logoutSection" className={css(styles.logoutSection)}>
             Welcome <b>{`${user.email} `}</b>
-            <span onClick={logOut} className={css(styles.logoutSectionSpan)}>
+            <span onClick={logout} className={css(styles.logoutSectionSpan)}>
               (logout)
             </span>
           </p>
@@ -82,4 +82,6 @@ const mapDispatchToProps = {
   logout,
 };
 
-export default  connect(mapStateToProps, mapDispatchToProps)(Header);
+// export default Header;
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

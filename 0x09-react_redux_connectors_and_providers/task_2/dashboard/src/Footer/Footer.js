@@ -6,10 +6,10 @@ import PropTypes from "prop-types";
 export function Footer({ user }) {
   return (
     <div className="footer">
-            <p>
-              Copyright {getFullYear()} - {getFooterCopy(true)}
-            </p>
-            {user && <a href="#">Contact us</a>}
+      <p>
+        Copyright {getFullYear()} - {getFooterCopy(true)}
+      </p>
+      {user && <a href="#">Contact us</a>}
     </div>
   );
 }
@@ -18,13 +18,13 @@ Footer.defaultProps = {
   user: null,
 };
 
-Footer.PropTypes = {
+Footer.propTypes = {
   user: PropTypes.object,
 };
 
 const mapStateToProps = (state) => {
   return {
-    user: state.get("user")
+    user: state.get("user"),
   };
 };
 
