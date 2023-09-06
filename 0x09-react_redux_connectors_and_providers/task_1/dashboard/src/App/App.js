@@ -91,9 +91,9 @@ class App extends Component {
   }
 
   render() {
-    const { user, logOut, listNotifications } = this.state;
+    const { user, logOut } = this.state;
 
-    const { isLoggedIn, displayDrawer } = this.props;
+    const { isLoggedIn, displayDrawer, listNotifications } = this.props;
 
     const value = { user, logOut };
 
@@ -196,6 +196,11 @@ export const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = {
+  displayNotificationDrawer,
+  hideNotificationDrawer,
+};
+
 // export default App;
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
