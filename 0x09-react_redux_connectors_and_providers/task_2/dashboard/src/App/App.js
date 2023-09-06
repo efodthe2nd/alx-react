@@ -12,7 +12,7 @@ import { getLatestNotification } from "../utils/utils";
 import { StyleSheet, css } from "aphrodite";
 import { user, logOut } from "./AppContext";
 import AppContext from "./AppContext";
-import { displayNotificationDrawer, hideNotificationDrawer } from "../actions/uiActionCreators";
+import { displayNotificationDrawer, hideNotificationDrawer, loginRequest } from "../actions/uiActionCreators";
 
 const listCourses = [
   { id: 1, name: "ES6", credit: 60 },
@@ -32,7 +32,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.handleKeyCombination = this.handleKeyCombination.bind(this);
-    this.logIn = this.logIn.bind(this);
     this.logOut = this.logOut.bind(this);
     this.markNotificationAsRead = this.markNotificationAsRead.bind(this);
     this.state = {
@@ -47,16 +46,6 @@ class App extends Component {
       alert("Logging you out");
       this.state.logOut();
     }
-  }
-
-  logIn(email, password) {
-    this.setState({
-      user: {
-        email,
-        password,
-        isLoggedIn: true,
-      },
-    });
   }
 
   logOut() {
@@ -82,7 +71,7 @@ class App extends Component {
   render() {
     const { user, logOut, listNotifications } = this.state;
 
-    const { isLoggedIn, displayDrawer, displayNotificationDrawer, hideNotificationDrawer } = this.props;
+    const { isLoggedIn, displayDrawer, displayNotificationDrawer, hideNotificationDrawer, login } = this.props;
 
     const value = { user, logOut };
 
@@ -139,6 +128,7 @@ App.defaultProps = {
   displayDrawer: false,
   displayNotificationDrawer: () => {},
   hideNotificationDrawer: () => {},
+  login: () => {},
 };
 
 App.propTypes = {
@@ -146,6 +136,7 @@ App.propTypes = {
   displayDrawer: PropTypes.bool,
   displayNotificationDrawer: PropTypes.func,
   hideNotificationDrawer: PropTypes.func,
+  login: PropTypes.func,
 };
 
 const cssVars = {
@@ -198,6 +189,7 @@ export const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   displayNotificationDrawer,
   hideNotificationDrawer,
+  login: loginRequest,
 };
 
 // export default App;
