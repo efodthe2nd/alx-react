@@ -91,9 +91,9 @@ class App extends Component {
   }
 
   render() {
-    const { user, logOut } = this.state;
+    const { user, logOut, listNotifications } = this.state;
 
-    const { isLoggedIn, displayDrawer, listNotifications } = this.props;
+    const { isLoggedIn, displayDrawer, displayNotificationDrawer, hideNotificationDrawer } = this.props;
 
     const value = { user, logOut };
 
